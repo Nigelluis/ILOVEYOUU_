@@ -6,7 +6,84 @@
 
 <title>For Savanna ♡</title>
 
-<style>
+<style>/* WHO LOVES MORE GAME */
+
+.love-game {
+    max-width: 850px;
+    margin: 70px auto;
+    padding: 45px 25px;
+    text-align: center;
+
+    background: rgba(255, 235, 245, 0.08);
+    border: 2px solid rgba(255, 150, 195, 0.5);
+    border-radius: 25px;
+
+    box-shadow: 0 0 30px rgba(255, 100, 180, 0.12);
+}
+
+.love-game h2 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 48px;
+    color: #ff91bc;
+    margin-bottom: 5px;
+}
+
+.game-subtitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 23px;
+    color: #ffeaf5;
+}
+
+.love-choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 35px;
+    min-height: 180px;
+}
+
+.love-choice {
+    border: 2px solid #ff91bc;
+    border-radius: 20px;
+
+    padding: 18px 35px;
+
+    background: rgba(255, 145, 188, 0.12);
+    color: white;
+
+    font-family: 'Patrick Hand', cursive;
+    font-size: 32px;
+
+    cursor: pointer;
+
+    transition:
+        font-size .35s ease,
+        padding .35s ease,
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+.love-choice:hover {
+    transform: translateY(-5px);
+}
+
+.nigel {
+    font-size: 32px;
+}
+
+.sav {
+    font-size: 32px;
+}
+
+.game-message {
+    margin-top: 30px;
+
+    font-family: 'Patrick Hand', cursive;
+    font-size: 25px;
+
+    color: #ffb0cf;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap');
 
@@ -784,5 +861,30 @@ items.forEach(item => observer.observe(item));
 
 </script>
 
-</body>
+</body><!-- WHO LOVES MORE? -->
+<section class="love-game">
+
+    <h2>Who loves more? 💗</h2>
+
+    <p class="game-subtitle">
+        Choose wisely...
+    </p>
+
+    <div class="love-choices">
+
+        <button id="nigelButton" class="love-choice nigel">
+            Nigel ❤️
+        </button>
+
+        <button id="savButton" class="love-choice sav">
+            Sav 💗
+        </button>
+
+    </div>
+
+    <p id="gameMessage" class="game-message">
+        Hmm... let's see 👀
+    </p>
+
+</section>
 </html>
