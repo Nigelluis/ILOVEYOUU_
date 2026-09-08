@@ -6,885 +6,1432 @@
 
 <title>For Savanna ♡</title>
 
-<style>/* WHO LOVES MORE GAME */
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-.love-game {
-    max-width: 850px;
-    margin: 70px auto;
-    padding: 45px 25px;
-    text-align: center;
-
-    background: rgba(255, 235, 245, 0.08);
-    border: 2px solid rgba(255, 150, 195, 0.5);
-    border-radius: 25px;
-
-    box-shadow: 0 0 30px rgba(255, 100, 180, 0.12);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.love-game h2 {
-    font-family: 'Patrick Hand', cursive;
-    font-size: 48px;
-    color: #ff91bc;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 20% 15%, rgba(137, 103, 205, .28), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(255, 150, 210, .15), transparent 25%),
+        linear-gradient(180deg, #08071b 0%, #15102e 45%, #28143b 100%);
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars,
+.stars2 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stars {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,220,250,.7) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.5px);
+    background-size: 120px 120px, 180px 180px, 240px 240px;
+    background-position: 10px 20px, 50px 90px, 100px 40px;
+    animation: starsMove 18s linear infinite;
+}
+
+.stars2 {
+    opacity: .55;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, #ffc9ee 1px, transparent 1.5px);
+    background-size: 150px 150px, 210px 210px;
+    background-position: 30px 70px, 100px 10px;
+    animation: starsMove 30s linear infinite reverse;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-120px);
+    }
+}
+
+/* =========================
+   FLOATING DECORATIONS
+========================= */
+
+.floating-heart {
+    position: fixed;
+    color: rgba(255, 184, 231, .7);
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 2;
+    animation: floatAround 7s ease-in-out infinite;
+}
+
+.h1 {
+    top: 18%;
+    left: 8%;
+}
+
+.h2 {
+    top: 35%;
+    right: 9%;
+    animation-delay: 2s;
+}
+
+.h3 {
+    top: 68%;
+    left: 5%;
+    animation-delay: 4s;
+}
+
+.h4 {
+    top: 80%;
+    right: 7%;
+    animation-delay: 1s;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(8deg);
+    }
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+
+    display: flex;
+    gap: 7px;
+    padding: 8px;
+
+    background: rgba(20, 12, 45, .68);
+    border: 1px solid rgba(255, 190, 235, .22);
+    border-radius: 999px;
+
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 35px rgba(0,0,0,.25);
+}
+
+nav a {
+    color: #ffeaf8;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    transition: .3s;
+}
+
+nav a:hover {
+    background: rgba(255, 183, 230, .16);
+    color: #fff;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    position: relative;
+    z-index: 3;
+    width: min(1050px, 92%);
+    margin: auto;
+}
+
+.script {
+    font-family: 'Caveat', cursive;
+}
+
+.small-title {
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    color: #ffc7ed;
+    letter-spacing: 1px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 160px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero .small-title {
+    font-size: 27px;
     margin-bottom: 5px;
 }
 
-.game-subtitle {
-    font-family: 'Patrick Hand', cursive;
-    font-size: 23px;
-    color: #ffeaf5;
+.hero h1 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(75px, 13vw, 145px);
+    line-height: .85;
+    font-weight: 500;
+    color: #fff1fa;
+    text-shadow:
+        0 0 25px rgba(255, 179, 229, .2),
+        0 0 60px rgba(190, 130, 255, .15);
 }
 
-.love-choices {
+.hero p {
+    margin-top: 25px;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(25px, 4vw, 38px);
+    color: #f8cce9;
+}
+
+.hero-heart {
+    display: inline-block;
+    color: #ff9bd9;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+.scroll-note {
+    margin-top: 60px;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: rgba(255,255,255,.6);
+}
+
+/* =========================
+   CLOUDS
+========================= */
+
+.cloud-area {
+    position: absolute;
+    bottom: -10px;
+    left: -5%;
+    width: 110%;
+    height: 190px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cloud {
+    position: absolute;
+    bottom: -70px;
+    width: 320px;
+    height: 130px;
+    border-radius: 100px;
+    background: linear-gradient(
+        180deg,
+        rgba(245, 191, 242, .75),
+        rgba(171, 111, 192, .25)
+    );
+    filter: blur(1px);
+    box-shadow:
+        100px 15px 0 -20px rgba(239, 182, 236, .65),
+        190px 0 0 -8px rgba(244, 193, 239, .65),
+        260px 25px 0 -25px rgba(230, 169, 230, .55);
+}
+
+.cloud.c1 {
+    left: -80px;
+}
+
+.cloud.c2 {
+    right: -80px;
+    transform: scale(.85);
+    opacity: .8;
+}
+
+.cloud.c3 {
+    left: 38%;
+    transform: scale(.65);
+    opacity: .55;
+}
+
+/* =========================
+   REMINDER LETTER
+========================= */
+
+.reminder-section {
+    padding: 80px 0 120px;
+}
+
+.letter-wrap {
+    position: relative;
+    padding: 45px 30px;
+}
+
+.tape {
+    position: absolute;
+    width: 150px;
+    height: 48px;
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%) rotate(-3deg);
+
+    background: rgba(255, 178, 222, .7);
+    border-radius: 5px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.1);
+    z-index: 2;
+}
+
+.letter {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    padding: 75px 75px 65px;
+
+    background:
+        linear-gradient(rgba(255,255,255,.92), rgba(255,239,249,.94));
+
+    color: #5d3555;
+
+    border: 3px solid rgba(255, 168, 219, .8);
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.32),
+        0 0 50px rgba(255,165,221,.12);
+}
+
+.letter::before {
+    content: "♡";
+    position: absolute;
+    top: 22px;
+    left: 28px;
+    font-size: 35px;
+    color: #e890c6;
+}
+
+.letter::after {
+    content: "♡";
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    font-size: 35px;
+    color: #e890c6;
+}
+
+.letter h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(42px, 6vw, 65px);
+    font-weight: 600;
+    color: #b75c91;
+    margin-bottom: 25px;
+}
+
+.letter p {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(22px, 3vw, 29px);
+    line-height: 1.5;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 35px;
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    color: #b75c91;
+}
+
+/* =========================
+   SONG
+========================= */
+
+.song-section {
+    padding: 30px 0 110px;
+}
+
+.song-card {
+    max-width: 650px;
+    margin: auto;
+    text-align: center;
+
+    padding: 45px 30px;
+
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,190,235,.25);
+    border-radius: 30px;
+
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.22);
+}
+
+.song-icon {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+    background: rgba(255,174,222,.15);
+    border: 1px solid rgba(255,194,232,.25);
+
+    font-size: 32px;
+    color: #ffc7eb;
+}
+
+.song-card h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 55px;
+    font-weight: 500;
+    color: #fff1fa;
+}
+
+.song-card p {
+    color: #dcb7d3;
+    margin-bottom: 25px;
+}
+
+.song-button {
+    display: inline-block;
+    padding: 13px 25px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255,194,232,.4);
+
+    background: rgba(255,161,217,.14);
+    color: #ffe8f7;
+
+    text-decoration: none;
+    transition: .3s;
+}
+
+.song-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255,161,217,.25);
+    box-shadow: 0 10px 30px rgba(255,130,210,.12);
+}
+
+/* =========================
+   PHOTOS
+========================= */
+
+.photos-section {
+    padding: 30px 0 120px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(50px, 7vw, 75px);
+    font-weight: 500;
+    color: #ffeef9;
+}
+
+.section-heading p {
+    color: #d4b7d0;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.photo-card {
+    position: relative;
+    padding: 9px;
+
+    background: #fff4fb;
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.28),
+        0 0 20px rgba(255,176,225,.08);
+
+    transform: rotate(-2deg);
+    transition: .35s;
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.photo-card:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.photo-card:nth-child(4) {
+    transform: rotate(3deg);
+}
+
+.photo-card:nth-child(5) {
+    transform: rotate(-3deg);
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.03);
+    z-index: 3;
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.photo-caption {
+    color: #a85b89;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    text-align: center;
+    padding: 8px 2px 3px;
+}
+
+/* =========================
+   MEMORIES
+========================= */
+
+.memories {
+    padding: 30px 0 110px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.memory {
+    padding: 30px;
+    min-height: 190px;
+
+    border-radius: 25px;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,191,232,.2);
+
+    backdrop-filter: blur(10px);
+}
+
+.memory-number {
+    font-family: 'Caveat', cursive;
+    color: #e99aca;
+    font-size: 27px;
+}
+
+.memory h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 8px 0;
+    color: #ffeafa;
+}
+
+.memory p {
+    color: #cfb8cf;
+    line-height: 1.7;
+}
+
+/* =========================
+   GAME
+========================= */
+
+.game-section {
+    padding: 50px 0 130px;
+}
+
+.game-card {
+    position: relative;
+    max-width: 850px;
+    margin: auto;
+
+    text-align: center;
+    padding: 55px 25px;
+
+    background:
+        radial-gradient(circle at top, rgba(255,175,226,.13), transparent 40%),
+        rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,195,235,.28);
+    border-radius: 35px;
+
+    backdrop-filter: blur(15px);
+    box-shadow: 0 30px 80px rgba(0,0,0,.3);
+
+    overflow: hidden;
+}
+
+.game-card h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(55px, 8vw, 85px);
+    font-weight: 500;
+    color: #fff0fa;
+}
+
+.game-subtitle {
+    color: #d5bad0;
+    margin-bottom: 35px;
+}
+
+.game-arena {
+    min-height: 260px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 35px;
-    margin-top: 35px;
-    min-height: 180px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
-.love-choice {
-    border: 2px solid #ff91bc;
-    border-radius: 20px;
+.choice {
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
 
-    padding: 18px 35px;
+    min-width: 190px;
+    padding: 18px 30px;
 
-    background: rgba(255, 145, 188, 0.12);
-    color: white;
-
-    font-family: 'Patrick Hand', cursive;
-    font-size: 32px;
+    border: 2px solid rgba(255,190,231,.45);
+    border-radius: 22px;
 
     cursor: pointer;
 
+    color: #fff;
+    background: rgba(255,172,220,.11);
+
     transition:
+        transform .35s ease,
         font-size .35s ease,
         padding .35s ease,
-        transform .35s ease,
         opacity .35s ease;
 }
 
-.love-choice:hover {
-    transform: translateY(-5px);
+.choice:hover {
+    background: rgba(255,172,220,.19);
 }
 
-.nigel {
+#nigelBtn {
+    transform: scale(1);
+}
+
+#savBtn {
+    transform: scale(1);
+}
+
+.game-result {
+    min-height: 55px;
+    margin-top: 20px;
+
+    font-family: 'Caveat', cursive;
     font-size: 32px;
+    color: #ffc9eb;
 }
 
-.sav {
-    font-size: 32px;
+/* =========================
+   LITTLE THINGS
+========================= */
+
+.little-things {
+    padding: 20px 0 110px;
 }
 
-.game-message {
+.little-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.little-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(255,194,232,.14);
+
+    color: #e5d2e2;
+}
+
+.little-heart {
+    color: #ff9bd9;
+    font-size: 22px;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-section {
+    padding: 50px 0 120px;
+    text-align: center;
+}
+
+.quote {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    color: #ffeaf8;
+    max-width: 800px;
+    margin: auto;
+}
+
+.quote-mark {
+    color: #ff9bd9;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    text-align: center;
+    padding: 70px 20px 140px;
+}
+
+.final-small {
+    font-family: 'Caveat', cursive;
+    color: #d6b7d2;
+    font-size: 26px;
+}
+
+.final h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(75px, 13vw, 140px);
+    font-weight: 500;
+    color: #fff0fa;
+    line-height: .9;
+    margin: 15px 0 30px;
+}
+
+.final p {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    color: #ffc5e9;
+}
+
+.final-heart {
+    display: inline-block;
     margin-top: 30px;
-
-    font-family: 'Patrick Hand', cursive;
-    font-size: 25px;
-
-    color: #ffb0cf;
+    font-size: 30px;
+    color: #ff9bd9;
+    animation: heartbeat 1.5s infinite;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+footer {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 25px;
+    color: rgba(255,255,255,.4);
+    font-family: 'Caveat', cursive;
+    font-size: 21px;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 15% 15%, rgba(255,170,210,.12), transparent 2px),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,.9), transparent 2px),
-        radial-gradient(circle at 35% 8%, rgba(255,255,255,.7), transparent 2px),
-        radial-gradient(circle at 65% 35%, rgba(255,180,220,.5), transparent 2px),
-        linear-gradient(135deg,#17182d,#24233f 50%,#17182d);
-
-    color:#fff;
-    font-family:'Quicksand',sans-serif;
-    overflow-x:hidden;
-}
-
-/* STARS */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,170,215,.8) 1px, transparent 1.5px);
-
-    background-size:120px 140px,180px 170px;
-    background-position:20px 10px,80px 50px;
-
-    opacity:.65;
-    z-index:0;
-}
-
-/* CLOUDS */
-
-.cloud{
-    position:fixed;
-    bottom:-50px;
-    width:350px;
-    height:100px;
-    background:rgba(255,170,210,.18);
-    border-radius:50%;
-    filter:blur(14px);
-    z-index:0;
-}
-
-.cloud.left{
-    left:-80px;
-}
-
-.cloud.right{
-    right:-80px;
-}
-
-/* MAIN */
-
-.container{
-    position:relative;
-    z-index:2;
-    width:min(1120px,92%);
-    margin:auto;
-    padding:45px 0 30px;
-}
-
-/* TOP DECORATIONS */
-
-.top-line{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:30px;
-    margin-bottom:15px;
-}
-
-.wavy-heart{
-    color:#ff82b5;
-    font-size:38px;
-    font-family:'Patrick Hand',cursive;
-}
-
-.wavy-heart.left{
-    transform:rotate(-12deg);
-}
-
-.wavy-heart.right{
-    transform:rotate(12deg);
-}
-
-/* HEADER */
-
-header{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.small-title{
-    font-family:'Patrick Hand',cursive;
-    color:#ff86b8;
-    font-size:30px;
-    letter-spacing:1px;
-    margin-bottom:12px;
-}
-
-.small-title::before{
-    content:"♡";
-    margin-right:18px;
-}
-
-.small-title::after{
-    content:"♡";
-    margin-left:18px;
-}
-
-h1{
-    font-family:'Patrick Hand',cursive;
-    font-size:clamp(55px,8vw,88px);
-    font-weight:400;
-    line-height:.9;
-    color:#fff8fb;
-    text-shadow:0 3px 20px rgba(255,150,200,.15);
-}
-
-.subtitle{
-    font-family:'Patrick Hand',cursive;
-    font-size:29px;
-    margin-top:20px;
-    color:#fff4fa;
-}
-
-/* REMINDER CARD */
-
-.letter{
-    position:relative;
-    background:
-        linear-gradient(
-            rgba(255,244,248,.95),
-            rgba(255,235,243,.94)
-        );
-
-    color:#28204d;
-
-    border:3px solid #ff9ac3;
-    border-radius:20px;
-
-    padding:48px 55px 55px;
-
-    box-shadow:
-        0 0 30px rgba(255,110,175,.18),
-        inset 0 0 30px rgba(255,255,255,.4);
-
-    margin-bottom:38px;
-}
-
-.letter::before{
-    content:"";
-    position:absolute;
-    top:-3px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:460px;
-    max-width:75%;
-    height:65px;
-
-    background:#f4a7c7;
-    opacity:.55;
-
-    border-radius:50%;
-    filter:blur(4px);
-}
-
-.letter-title{
-    position:relative;
-    text-align:center;
-
-    font-family:'Patrick Hand',cursive;
-    font-size:34px;
-
-    margin-bottom:28px;
-}
-
-.letter-title span{
-    position:relative;
-    display:inline-block;
-
-    padding:5px 30px;
-
-    z-index:2;
-}
-
-.letter-title span::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:#f4a7c7;
-    opacity:.65;
-
-    border-radius:50%;
-    transform:rotate(-2deg) scale(1.05);
-    z-index:-1;
-}
-
-.letter-text{
-    font-family:'Patrick Hand',cursive;
-    font-size:28px;
-    line-height:1.55;
-    text-align:left;
-}
-
-.corner-heart{
-    position:absolute;
-    color:#d96a9e;
-    font-size:27px;
-}
-
-.corner-heart.one{
-    left:28px;
-    bottom:18px;
-}
-
-.corner-heart.two{
-    right:28px;
-    bottom:18px;
-}
-
-/* PHOTOS */
-
-.photos{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:25px;
-    margin-top:30px;
-}
-
-.photo-card{
-    text-align:center;
-}
-
-.photo-frame{
-    background:#ffb4d2;
-    padding:4px;
-
-    border-radius:13px;
-
-    box-shadow:
-        0 0 12px rgba(255,130,185,.35),
-        0 8px 20px rgba(0,0,0,.25);
-
-    transition:.3s ease;
-}
-
-.photo-frame:hover{
-    transform:translateY(-8px) rotate(-1deg);
-    box-shadow:
-        0 0 25px rgba(255,130,185,.5),
-        0 12px 25px rgba(0,0,0,.3);
-}
-
-.photo-frame img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-
-    display:block;
-
-    border-radius:9px;
-}
-
-.photo-name{
-    margin-top:10px;
-
-    font-family:'Patrick Hand',cursive;
-    font-size:21px;
-    color:#ff9cc5;
-}
-
-.photo-name::before{
-    content:"♡";
-    margin-right:9px;
-}
-
-/* BOTTOM MESSAGE */
-
-.bottom-message{
-    text-align:center;
-    margin-top:28px;
-}
-
-.bottom-message .line{
-    width:330px;
-    max-width:80%;
-    height:2px;
-    background:#ff83b6;
-    margin:0 auto 12px;
-    position:relative;
-}
-
-.bottom-message .line::after{
-    content:"♡";
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-
-    background:#202039;
-    padding:0 15px;
-
-    color:#ff83b6;
-    font-size:25px;
-}
-
-.bottom-message p{
-    font-family:'Patrick Hand',cursive;
-    font-size:20px;
-    color:#ffb0cf;
-    margin-top:18px;
-}
-
-/* EXTRA SECTION */
-
-.extra{
-    margin-top:70px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.box{
-    background:rgba(255,235,245,.08);
-    border:2px solid rgba(255,150,195,.45);
-    border-radius:20px;
-    padding:35px;
-
-    backdrop-filter:blur(8px);
-
-    transition:.3s;
-}
-
-.box:hover{
-    transform:translateY(-5px);
-    background:rgba(255,235,245,.12);
-}
-
-.box h2{
-    font-family:'Patrick Hand',cursive;
-    color:#ff91bc;
-    font-size:34px;
-    margin-bottom:15px;
-}
-
-.box p{
-    font-family:'Patrick Hand',cursive;
-    color:#fceaf4;
-    font-size:21px;
-    line-height:1.5;
-}
-
-/* BUTTON */
-
-.song-button{
-    display:inline-block;
-    margin-top:22px;
-
-    padding:12px 25px;
-
-    border:2px solid #ff91bc;
-    border-radius:30px;
-
-    color:#fff;
-    text-decoration:none;
-
-    font-family:'Patrick Hand',cursive;
-    font-size:20px;
-
-    transition:.3s;
-}
-
-.song-button:hover{
-    background:#ff91bc;
-    color:#211d38;
-    box-shadow:0 0 20px rgba(255,145,188,.5);
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:65px 0 20px;
-
-    font-family:'Patrick Hand',cursive;
-    color:#ff9dc5;
-    font-size:22px;
-}
-
-footer span{
-    font-size:30px;
-}
-
-/* FLOATING HEARTS */
-
-.floating-heart{
-    position:fixed;
-    color:#ff83b6;
-    font-size:20px;
-    pointer-events:none;
-    animation:float 7s linear infinite;
-    opacity:0;
-    z-index:1;
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(100vh) rotate(0deg);
-        opacity:0;
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        width: 92%;
+        justify-content: center;
+        overflow-x: auto;
     }
 
-    10%{
-        opacity:.8;
+    nav a {
+        font-size: 10px;
+        padding: 7px 9px;
+        white-space: nowrap;
     }
 
-    90%{
-        opacity:.5;
+    .letter {
+        padding: 65px 28px 45px;
     }
 
-    100%{
-        transform:translateY(-20vh) rotate(25deg);
-        opacity:0;
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo-card:last-child {
+        grid-column: span 2;
+        width: 48%;
+        justify-self: center;
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-arena {
+        gap: 20px;
+    }
+
+    .choice {
+        min-width: 150px;
+        font-size: 32px;
     }
 }
 
-/* MOBILE */
+@media (max-width: 480px) {
 
-@media(max-width:850px){
-
-    .photos{
-        grid-template-columns:repeat(2,1fr);
+    .hero {
+        padding-top: 130px;
     }
 
-    .photo-card:last-child{
-        grid-column:1 / -1;
-        width:50%;
-        margin:auto;
+    .hero h1 {
+        font-size: 75px;
     }
 
-    .extra{
-        grid-template-columns:1fr;
+    .letter-wrap {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
-    .letter{
-        padding:38px 25px 50px;
+    .letter {
+        border-radius: 18px;
     }
 
-    .letter-text{
-        font-size:23px;
+    .photo-grid {
+        gap: 10px;
     }
 
-}
-
-@media(max-width:500px){
-
-    .container{
-        width:94%;
+    .photo-card {
+        padding: 6px;
     }
 
-    .small-title{
-        font-size:24px;
+    .photo-caption {
+        font-size: 18px;
     }
 
-    h1{
-        font-size:55px;
+    .game-card {
+        padding: 45px 15px;
     }
 
-    .subtitle{
-        font-size:23px;
-    }
-
-    .photos{
-        gap:12px;
-    }
-
-    .letter-text{
-        font-size:20px;
-    }
-
-    .letter-title{
-        font-size:28px;
-    }
-
-}
-
-/* ANIMATION */
-
-.fade{
-    opacity:0;
-    transform:translateY(20px);
-    animation:appear 1s ease forwards;
-}
-
-@keyframes appear{
-    to{
-        opacity:1;
-        transform:translateY(0);
+    .choice {
+        width: 100%;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="cloud left"></div>
-<div class="cloud right"></div>
+<!-- Background -->
+<div class="stars"></div>
+<div class="stars2"></div>
 
-<div class="container">
+<div class="floating-heart h1">♡</div>
+<div class="floating-heart h2">♡</div>
+<div class="floating-heart h3">♡</div>
+<div class="floating-heart h4">♡</div>
 
-    <header class="fade">
+<!-- Navigation -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#reminder">Reminder</a>
+    <a href="#song">Song</a>
+    <a href="#photos">Photos</a>
+    <a href="#game">Game</a>
+</nav>
 
-        <div class="top-line">
-            <div class="wavy-heart left">♡</div>
 
-            <div class="small-title">
-                i got bored baby
-            </div>
+<!-- =========================
+     HERO
+========================= -->
 
-            <div class="wavy-heart right">♡</div>
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <div class="small-title">
+            i got bored baby
         </div>
 
         <h1>
-            For Savanna ♡
+            For Savanna <span class="hero-heart">♡</span>
         </h1>
 
-        <div class="subtitle">
+        <p>
             pros of having a Coding bf :)
+        </p>
+
+        <div class="scroll-note">
+            scroll down baby ↓
         </div>
 
-    </header>
+    </div>
+
+    <div class="cloud-area">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+    </div>
+
+</section>
 
 
-    <!-- LETTER -->
+<!-- =========================
+     REMINDER
+========================= -->
 
-    <section class="letter fade">
+<section class="reminder-section" id="reminder">
 
-        <div class="letter-title">
-            <span>A little reminder baby</span>
+    <div class="letter-wrap reveal">
+
+        <div class="tape"></div>
+
+        <div class="letter">
+
+            <h2>
+                A little reminder baby ♡
+            </h2>
+
+            <p>
+                HELLOOOO BABYYYY i just wanted to tell you how much you mean to me through this small gesture and a way of saying of saying I LOVEE YOUUU and how much i miss you :( .
+                i have been stalking your reposts ah, babyyy namann :( you know i love youuu so so so much and i only love YOU, ONLY MY BABY, Savanna Yoell.
+                Take care of yourself po ah iba talaga pag Anemic e :(. I Love youuu to INFINITY AND BEYOND
+            </p>
+
+            <div class="signature">
+                — from your Coding bf ♡
+            </div>
+
         </div>
 
-        <div class="letter-text">
+    </div>
 
-            HELLOOOO BABYYYY i just wanted to tell you how much you
-            mean to me through this small gesture and a way of saying
-            of saying I LOVEE YOUUU and how much i miss you :(.
-            <br><br>
+</section>
 
-            i have been stalking your reposts ah, babyyy namann :(
-            you know i love youuu so so so much and i only love YOU,
-            ONLY MY BABY, Savanna Yoell.
-            <br><br>
 
-            Take care of yourself po ah.
-            I Love youuu to INFINITY AND BEYOND
+<!-- =========================
+     SONG
+========================= -->
 
+<section class="song-section" id="song">
+
+    <div class="song-card reveal">
+
+        <div class="song-icon">
+            ♫
         </div>
 
-        <div class="corner-heart one">♡</div>
-        <div class="corner-heart two">♡</div>
-
-    </section>
-
-
-    <!-- PHOTOS -->
-
-    <section class="photos fade">
-
-        <div class="photo-card">
-            <div class="photo-frame">
-                <img src="photo.1.jpg" alt="Photo 1">
-            </div>
-
-            <div class="photo-name">
-                Photo 1
-            </div>
+        <div class="small-title">
+            our song
         </div>
 
-
-        <div class="photo-card">
-            <div class="photo-frame">
-                <img src="photo.2.jpg" alt="Photo 2">
-            </div>
-
-            <div class="photo-name">
-                Photo 2
-            </div>
-        </div>
-
-
-        <div class="photo-card">
-            <div class="photo-frame">
-                <img src="photo.3.jpg" alt="Photo 3">
-            </div>
-
-            <div class="photo-name">
-                Photo 3
-            </div>
-        </div>
-
-
-        <div class="photo-card">
-            <div class="photo-frame">
-                <img src="photo.4.jpg" alt="Photo 4">
-            </div>
-
-            <div class="photo-name">
-                Photo 4
-            </div>
-        </div>
-
-
-        <div class="photo-card">
-            <div class="photo-frame">
-                <img src="photo.5.jpg" alt="Photo 5">
-            </div>
-
-            <div class="photo-name">
-                Photo 5
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- BOTTOM -->
-
-    <div class="bottom-message fade">
-
-        <div class="line"></div>
+        <h2>
+            Bubbly ♡
+        </h2>
 
         <p>
-            you mean the world to me ♡
+            Colbie Caillat
+        </p>
+
+        <a
+            class="song-button"
+            href="https://open.spotify.com/track/1lkvpmrCaXK8QtliFDcHBO"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            🎵 Play our song ♡
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTOS
+========================= -->
+
+<section class="photos-section" id="photos">
+
+    <div class="section-heading reveal">
+
+        <div class="small-title">
+            little pieces of us
+        </div>
+
+        <h2>
+            Our Photos ♡
+        </h2>
+
+        <p>
+            five little memories in one place
         </p>
 
     </div>
 
+    <div class="photo-grid">
 
-    <!-- EXTRA CONTENT -->
+        <div class="photo-card reveal">
+            <img src="photo.1.jpg" alt="Memory 1">
+            <div class="photo-caption">♡ you</div>
+        </div>
 
-    <section class="extra">
+        <div class="photo-card reveal">
+            <img src="photo.2.jpg" alt="Memory 2">
+            <div class="photo-caption">♡ my favorite</div>
+        </div>
 
-        <div class="box fade">
+        <div class="photo-card reveal">
+            <img src="photo.3.jpg" alt="Memory 3">
+            <div class="photo-caption">♡ us</div>
+        </div>
 
-            <h2>
-                ♡ Our Song
-            </h2>
+        <div class="photo-card reveal">
+            <img src="photo.4.jpg" alt="Memory 4">
+            <div class="photo-caption">♡ always</div>
+        </div>
+
+        <div class="photo-card reveal">
+            <img src="photo.5.jpg" alt="Memory 5">
+            <div class="photo-caption">♡ forever</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MEMORIES
+========================= -->
+
+<section class="memories">
+
+    <div class="section-heading reveal">
+
+        <div class="small-title">
+            things i like about us
+        </div>
+
+        <h2>
+            Our Little Memories
+        </h2>
+
+    </div>
+
+    <div class="memory-grid">
+
+        <div class="memory reveal">
+            <div class="memory-number">01 ♡</div>
+
+            <h3>
+                The Random Conversations
+            </h3>
 
             <p>
-                Bubbly — Colbie Caillat
+                Somehow the random conversations always become the conversations I remember the most.
             </p>
+        </div>
 
-            <a
-                class="song-button"
-                href="https://open.spotify.com/track/1lkvpmrCaXK8QtliFDcHBO"
-                target="_blank"
-                rel="noopener noreferrer"
+        <div class="memory reveal">
+            <div class="memory-number">02 ♡</div>
+
+            <h3>
+                The Laughs
+            </h3>
+
+            <p>
+                The stupid jokes, random moments, and things that somehow make absolutely no sense.
+            </p>
+        </div>
+
+        <div class="memory reveal">
+            <div class="memory-number">03 ♡</div>
+
+            <h3>
+                The Little Moments
+            </h3>
+
+            <p>
+                Sometimes it isn't a huge moment. Sometimes it's just being there and knowing someone cares.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section class="game-section" id="game">
+
+    <div class="game-card reveal">
+
+        <div class="small-title">
+            okay baby... time for the important question
+        </div>
+
+        <h2>
+            Who loves more? ♡
+        </h2>
+
+        <p class="game-subtitle">
+            choose wisely :)
+        </p>
+
+        <div class="game-arena">
+
+            <button
+                class="choice"
+                id="nigelBtn"
+                onclick="chooseNigel()"
             >
-                🎵 Play our song
-            </a>
+                Nigel
+            </button>
+
+            <button
+                class="choice"
+                id="savBtn"
+                onclick="chooseSav()"
+            >
+                Sav
+            </button>
 
         </div>
 
+        <div
+            class="game-result"
+            id="gameResult"
+        ></div>
 
-        <div class="box fade">
+    </div>
 
-            <h2>
-                ♡ Little Reminder
-            </h2>
+</section>
 
-            <p>
-                No matter how busy things get,
-                remember that you are appreciated,
-                cared about, and very special.
-            </p>
 
+<!-- =========================
+     LITTLE THINGS
+========================= -->
+
+<section class="little-things">
+
+    <div class="section-heading reveal">
+
+        <div class="small-title">
+            because it's the little things
         </div>
 
-    </section>
+        <h2>
+            Things I Love ♡
+        </h2>
+
+    </div>
+
+    <div class="little-list">
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The random conversations</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The stupid jokes</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The moments we can't stop laughing</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The unexpected messages</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The memories we already have</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>The memories we haven't made yet</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>Being able to be ourselves</span>
+        </div>
+
+        <div class="little-item reveal">
+            <span class="little-heart">♡</span>
+            <span>Simply having someone who matters</span>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <footer class="fade">
+<!-- =========================
+     QUOTE
+========================= -->
 
-        <span>♡</span>
+<section class="quote-section">
 
-        <br>
+    <div class="quote reveal">
 
-        Made with love for Savanna
+        <span class="quote-mark">“</span>
 
-        <br>
+        Some of the best parts of life are the moments we never planned.
 
-        <span>♡</span>
+        <span class="quote-mark">”</span>
 
-    </footer>
+    </div>
 
-</div>
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="final">
+
+    <div class="final-small reveal">
+        the end...
+    </div>
+
+    <h2 class="reveal">
+        for now ♡
+    </h2>
+
+    <p class="reveal">
+        I Love You ♡
+    </p>
+
+    <div class="final-heart">
+        ♥
+    </div>
+
+</section>
+
+
+<footer>
+    Made with ♡ for Savanna
+</footer>
 
 
 <script>
 
-/* FLOATING HEARTS */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
-function createHeart(){
-
-    const heart = document.createElement("div");
-
-    heart.className = "floating-heart";
-
-    heart.innerHTML = Math.random() > .5 ? "♡" : "♥";
-
-    heart.style.left = Math.random() * 100 + "vw";
-
-    heart.style.animationDuration =
-        (5 + Math.random() * 5) + "s";
-
-    heart.style.fontSize =
-        (12 + Math.random() * 20) + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },10000);
-}
-
-setInterval(createHeart,900);
-
-
-/* FADE IN */
-
-const items = document.querySelectorAll(".fade");
+const revealElements = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver(
     entries => {
 
         entries.forEach(entry => {
 
-            if(entry.isIntersecting){
-
-                entry.target.style.animationDelay =
-                    Math.random() * .3 + "s";
-
-                entry.target.classList.add("fade");
-
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
             }
 
         });
 
     },
     {
-        threshold:.1
+        threshold: 0.12
     }
 );
 
-items.forEach(item => observer.observe(item));
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+
+
+/* =========================
+   WHO LOVES MORE GAME
+========================= */
+
+let nigelScale = 1;
+let savScale = 1;
+let savClicks = 0;
+
+const nigelButton = document.getElementById('nigelBtn');
+const savButton = document.getElementById('savBtn');
+const gameResult = document.getElementById('gameResult');
+
+
+function chooseSav() {
+
+    savClicks++;
+
+    /*
+        Every time Sav is clicked:
+        Nigel gets bigger.
+        Sav gets smaller.
+    */
+
+    nigelScale += 0.35;
+    savScale -= 0.13;
+
+    if (savScale < 0.25) {
+        savScale = 0.25;
+    }
+
+    nigelButton.style.transform =
+        `scale(${nigelScale})`;
+
+    savButton.style.transform =
+        `scale(${savScale})`;
+
+    if (savClicks === 1) {
+
+        gameResult.innerHTML =
+            "HAHAHA nice try baby 😭♡";
+
+    } else if (savClicks === 2) {
+
+        gameResult.innerHTML =
+            "Are you REALLY sure about that? 👀";
+
+    } else if (savClicks === 3) {
+
+        gameResult.innerHTML =
+            "Baby... you're making Nigel bigger 😭";
+
+    } else if (savClicks >= 4) {
+
+        gameResult.innerHTML =
+            "You can't escape the truth anymore HAHAHA ♡";
+
+    }
+
+    /*
+        Eventually make the Sav button impossible
+        to meaningfully click.
+    */
+
+    if (savClicks >= 7) {
+
+        savButton.disabled = true;
+
+        savButton.style.opacity = "0.35";
+        savButton.style.cursor = "not-allowed";
+
+        gameResult.innerHTML =
+            "GAME OVER ♡ Nigel wins. Obviously. 😌";
+
+    }
+}
+
+
+function chooseNigel() {
+
+    nigelScale += 0.08;
+
+    nigelButton.style.transform =
+        `scale(${nigelScale})`;
+
+    gameResult.innerHTML =
+        "CORRECT ANSWER BABYYYY 😌♡";
+
+}
+
+
+/* =========================
+   LITTLE HEART EFFECT
+========================= */
+
+document.addEventListener('click', function(event) {
+
+    const heart = document.createElement('div');
+
+    heart.innerHTML = '♡';
+
+    heart.style.position = 'fixed';
+    heart.style.left = event.clientX + 'px';
+    heart.style.top = event.clientY + 'px';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '999';
+    heart.style.color = '#ffb4df';
+    heart.style.fontSize = '20px';
+
+    document.body.appendChild(heart);
+
+    heart.animate(
+        [
+            {
+                transform: 'translateY(0) scale(1)',
+                opacity: 1
+            },
+            {
+                transform: 'translateY(-55px) scale(1.5)',
+                opacity: 0
+            }
+        ],
+        {
+            duration: 800,
+            easing: 'ease-out'
+        }
+    );
+
+    setTimeout(() => {
+        heart.remove();
+    }, 800);
+
+});
 
 </script>
 
-</body><!-- WHO LOVES MORE? -->
-<section class="love-game">
-
-    <h2>Who loves more? 💗</h2>
-
-    <p class="game-subtitle">
-        Choose wisely...
-    </p>
-
-    <div class="love-choices">
-
-        <button id="nigelButton" class="love-choice nigel">
-            Nigel ❤️
-        </button>
-
-        <button id="savButton" class="love-choice sav">
-            Sav 💗
-        </button>
-
-    </div>
-
-    <p id="gameMessage" class="game-message">
-        Hmm... let's see 👀
-    </p>
-
-</section>
+</body>
 </html>
