@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,1458 +8,781 @@
 
 <style>
 
-/* =========================
-   BASIC
-========================= */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap');
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Georgia, "Times New Roman", serif;
-    background:#f7efe7;
-    color:#4d3732;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,170,210,.12), transparent 2px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.9), transparent 2px),
+        radial-gradient(circle at 35% 8%, rgba(255,255,255,.7), transparent 2px),
+        radial-gradient(circle at 65% 35%, rgba(255,180,220,.5), transparent 2px),
+        linear-gradient(135deg,#17182d,#24233f 50%,#17182d);
+
+    color:#fff;
+    font-family:'Quicksand',sans-serif;
     overflow-x:hidden;
 }
 
-section{
-    padding:110px 8%;
-    max-width:1200px;
-    margin:auto;
-}
+/* STARS */
 
-.section-title{
-    text-align:center;
-    font-size:42px;
-    margin-bottom:20px;
-    color:#6b4942;
-}
-
-.section-subtitle{
-    text-align:center;
-    max-width:700px;
-    margin:0 auto 60px;
-    line-height:1.8;
-    color:#896e67;
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-nav{
+body::before{
+    content:"";
     position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
+    inset:0;
+    pointer-events:none;
 
-    width:min(92%,900px);
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,170,215,.8) 1px, transparent 1.5px);
 
-    padding:14px 25px;
+    background-size:120px 140px,180px 170px;
+    background-position:20px 10px,80px 50px;
 
-    background:rgba(255,250,245,.92);
-    backdrop-filter:blur(12px);
-
-    border:1px solid #ead8ce;
-    border-radius:50px;
-
-    display:flex;
-    justify-content:center;
-    gap:28px;
-
-    z-index:1000;
-
-    box-shadow:0 8px 30px rgba(100,60,50,.1);
+    opacity:.65;
+    z-index:0;
 }
 
-nav a{
-    text-decoration:none;
-    color:#76534c;
-    font-size:14px;
-    transition:.3s;
+/* CLOUDS */
+
+.cloud{
+    position:fixed;
+    bottom:-50px;
+    width:350px;
+    height:100px;
+    background:rgba(255,170,210,.18);
+    border-radius:50%;
+    filter:blur(14px);
+    z-index:0;
 }
 
-nav a:hover{
-    color:#c47c8a;
+.cloud.left{
+    left:-80px;
 }
 
+.cloud.right{
+    right:-80px;
+}
 
-/* =========================
-   HERO
-========================= */
+/* MAIN */
 
-.hero{
-    min-height:100vh;
+.container{
+    position:relative;
+    z-index:2;
+    width:min(1120px,92%);
+    margin:auto;
+    padding:45px 0 30px;
+}
 
+/* TOP DECORATIONS */
+
+.top-line{
     display:flex;
     align-items:center;
     justify-content:center;
-
-    text-align:center;
-
-    position:relative;
-
-    padding-top:120px;
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.small-title{
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:13px;
-    color:#b47b83;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:clamp(60px,10vw,120px);
-    font-weight:normal;
-    color:#694942;
-    line-height:.95;
-    margin-bottom:30px;
-}
-
-.hero p{
-    font-size:20px;
-    line-height:1.8;
-    color:#876b64;
-    max-width:650px;
-    margin:auto;
-}
-
-.scroll{
-    margin-top:50px;
-    font-size:13px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#a88880;
-}
-
-
-/* =========================
-   LETTER
-========================= */
-
-.note-section{
-    background:#fffaf6;
-    border-radius:30px;
-
-    margin:80px auto;
-
-    box-shadow:0 20px 60px rgba(100,60,50,.08);
-}
-
-.note{
-    max-width:850px;
-    margin:auto;
-
-    background:#fffdfb;
-
-    padding:60px;
-
-    border:1px solid #eadbd3;
-
-    box-shadow:0 15px 40px rgba(90,50,40,.08);
-
-    position:relative;
-}
-
-.note:before{
-    content:"";
-
-    position:absolute;
-
-    top:18px;
-    left:50%;
-
-    width:100px;
-    height:18px;
-
-    background:#e8b8bd;
-
-    transform:translateX(-50%) rotate(-2deg);
-
-    opacity:.7;
-}
-
-.note p{
-    font-size:20px;
-    line-height:2;
-}
-
-
-/* =========================
-   OUR SONG
-========================= */
-
-.song-section{
-    text-align:center;
-}
-
-.song-card{
-    max-width:650px;
-
-    margin:auto;
-
-    padding:60px 30px;
-
-    background:#fffaf6;
-
-    border:1px solid #eadbd3;
-
-    border-radius:30px;
-
-    box-shadow:0 20px 50px rgba(90,50,40,.1);
-}
-
-.song-icon{
-    font-size:55px;
+    gap:30px;
     margin-bottom:15px;
 }
 
-.song-card h2{
-    font-size:42px;
-    font-weight:normal;
-    margin:10px 0;
+.wavy-heart{
+    color:#ff82b5;
+    font-size:38px;
+    font-family:'Patrick Hand',cursive;
 }
 
-.song-card p{
-    color:#896e67;
-    margin-bottom:30px;
+.wavy-heart.left{
+    transform:rotate(-12deg);
 }
+
+.wavy-heart.right{
+    transform:rotate(12deg);
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.small-title{
+    font-family:'Patrick Hand',cursive;
+    color:#ff86b8;
+    font-size:30px;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.small-title::before{
+    content:"♡";
+    margin-right:18px;
+}
+
+.small-title::after{
+    content:"♡";
+    margin-left:18px;
+}
+
+h1{
+    font-family:'Patrick Hand',cursive;
+    font-size:clamp(55px,8vw,88px);
+    font-weight:400;
+    line-height:.9;
+    color:#fff8fb;
+    text-shadow:0 3px 20px rgba(255,150,200,.15);
+}
+
+.subtitle{
+    font-family:'Patrick Hand',cursive;
+    font-size:29px;
+    margin-top:20px;
+    color:#fff4fa;
+}
+
+/* REMINDER CARD */
+
+.letter{
+    position:relative;
+    background:
+        linear-gradient(
+            rgba(255,244,248,.95),
+            rgba(255,235,243,.94)
+        );
+
+    color:#28204d;
+
+    border:3px solid #ff9ac3;
+    border-radius:20px;
+
+    padding:48px 55px 55px;
+
+    box-shadow:
+        0 0 30px rgba(255,110,175,.18),
+        inset 0 0 30px rgba(255,255,255,.4);
+
+    margin-bottom:38px;
+}
+
+.letter::before{
+    content:"";
+    position:absolute;
+    top:-3px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:460px;
+    max-width:75%;
+    height:65px;
+
+    background:#f4a7c7;
+    opacity:.55;
+
+    border-radius:50%;
+    filter:blur(4px);
+}
+
+.letter-title{
+    position:relative;
+    text-align:center;
+
+    font-family:'Patrick Hand',cursive;
+    font-size:34px;
+
+    margin-bottom:28px;
+}
+
+.letter-title span{
+    position:relative;
+    display:inline-block;
+
+    padding:5px 30px;
+
+    z-index:2;
+}
+
+.letter-title span::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:#f4a7c7;
+    opacity:.65;
+
+    border-radius:50%;
+    transform:rotate(-2deg) scale(1.05);
+    z-index:-1;
+}
+
+.letter-text{
+    font-family:'Patrick Hand',cursive;
+    font-size:28px;
+    line-height:1.55;
+    text-align:left;
+}
+
+.corner-heart{
+    position:absolute;
+    color:#d96a9e;
+    font-size:27px;
+}
+
+.corner-heart.one{
+    left:28px;
+    bottom:18px;
+}
+
+.corner-heart.two{
+    right:28px;
+    bottom:18px;
+}
+
+/* PHOTOS */
+
+.photos{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:25px;
+    margin-top:30px;
+}
+
+.photo-card{
+    text-align:center;
+}
+
+.photo-frame{
+    background:#ffb4d2;
+    padding:4px;
+
+    border-radius:13px;
+
+    box-shadow:
+        0 0 12px rgba(255,130,185,.35),
+        0 8px 20px rgba(0,0,0,.25);
+
+    transition:.3s ease;
+}
+
+.photo-frame:hover{
+    transform:translateY(-8px) rotate(-1deg);
+    box-shadow:
+        0 0 25px rgba(255,130,185,.5),
+        0 12px 25px rgba(0,0,0,.3);
+}
+
+.photo-frame img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:9px;
+}
+
+.photo-name{
+    margin-top:10px;
+
+    font-family:'Patrick Hand',cursive;
+    font-size:21px;
+    color:#ff9cc5;
+}
+
+.photo-name::before{
+    content:"♡";
+    margin-right:9px;
+}
+
+/* BOTTOM MESSAGE */
+
+.bottom-message{
+    text-align:center;
+    margin-top:28px;
+}
+
+.bottom-message .line{
+    width:330px;
+    max-width:80%;
+    height:2px;
+    background:#ff83b6;
+    margin:0 auto 12px;
+    position:relative;
+}
+
+.bottom-message .line::after{
+    content:"♡";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    background:#202039;
+    padding:0 15px;
+
+    color:#ff83b6;
+    font-size:25px;
+}
+
+.bottom-message p{
+    font-family:'Patrick Hand',cursive;
+    font-size:20px;
+    color:#ffb0cf;
+    margin-top:18px;
+}
+
+/* EXTRA SECTION */
+
+.extra{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.box{
+    background:rgba(255,235,245,.08);
+    border:2px solid rgba(255,150,195,.45);
+    border-radius:20px;
+    padding:35px;
+
+    backdrop-filter:blur(8px);
+
+    transition:.3s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    background:rgba(255,235,245,.12);
+}
+
+.box h2{
+    font-family:'Patrick Hand',cursive;
+    color:#ff91bc;
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.box p{
+    font-family:'Patrick Hand',cursive;
+    color:#fceaf4;
+    font-size:21px;
+    line-height:1.5;
+}
+
+/* BUTTON */
 
 .song-button{
     display:inline-block;
+    margin-top:22px;
 
+    padding:12px 25px;
+
+    border:2px solid #ff91bc;
+    border-radius:30px;
+
+    color:#fff;
     text-decoration:none;
 
-    background:#c5868e;
-    color:white;
-
-    padding:16px 32px;
-
-    border-radius:50px;
+    font-family:'Patrick Hand',cursive;
+    font-size:20px;
 
     transition:.3s;
 }
 
 .song-button:hover{
-    transform:translateY(-4px);
-    background:#a96973;
+    background:#ff91bc;
+    color:#211d38;
+    box-shadow:0 0 20px rgba(255,145,188,.5);
 }
 
-
-/* =========================
-   PHOTOS
-========================= */
-
-.photo-grid{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:45px;
-
-    max-width:1000px;
-
-    margin:auto;
-}
-
-.polaroid{
-    background:white;
-
-    padding:16px 16px 30px;
-
-    box-shadow:0 15px 35px rgba(80,50,40,.15);
-
-    transition:.4s;
-}
-
-.polaroid:nth-child(1){
-    transform:rotate(-2deg);
-}
-
-.polaroid:nth-child(2){
-    transform:rotate(2deg);
-}
-
-.polaroid:nth-child(3){
-    transform:rotate(-1deg);
-}
-
-.polaroid:nth-child(4){
-    transform:rotate(2deg);
-}
-
-.polaroid:nth-child(5){
-    transform:rotate(-2deg);
-}
-
-.polaroid:hover{
-    transform:rotate(0deg) translateY(-10px);
-
-    box-shadow:
-        0 25px 50px rgba(80,50,40,.2);
-}
-
-.polaroid img{
-    width:100%;
-    height:380px;
-
-    object-fit:cover;
-
-    display:block;
-}
-
-.caption{
-    text-align:center;
-
-    padding-top:20px;
-
-    font-size:17px;
-
-    color:#72534c;
-}
-
-
-/* =========================
-   MEMORIES
-========================= */
-
-.memory-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:25px;
-}
-
-.memory-card{
-    background:#fffaf6;
-
-    border:1px solid #eadbd3;
-
-    padding:35px 25px;
-
-    border-radius:20px;
-
-    transition:.3s;
-}
-
-.memory-card:hover{
-    transform:translateY(-7px);
-
-    box-shadow:
-        0 15px 35px rgba(90,50,40,.1);
-}
-
-.memory-number{
-    font-size:14px;
-
-    letter-spacing:2px;
-
-    color:#bd8089;
-
-    margin-bottom:20px;
-}
-
-.memory-card h3{
-    font-size:23px;
-
-    margin-bottom:15px;
-}
-
-.memory-card p{
-    line-height:1.8;
-
-    color:#806860;
-}
-
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline{
-    max-width:800px;
-
-    margin:auto;
-
-    position:relative;
-}
-
-.timeline:before{
-    content:"";
-
-    position:absolute;
-
-    left:20px;
-    top:0;
-    bottom:0;
-
-    width:2px;
-
-    background:#e4c9c2;
-}
-
-.timeline-item{
-    position:relative;
-
-    padding-left:65px;
-
-    margin-bottom:55px;
-}
-
-.timeline-dot{
-    position:absolute;
-
-    left:11px;
-    top:4px;
-
-    width:20px;
-    height:20px;
-
-    border-radius:50%;
-
-    background:#c98b94;
-
-    border:5px solid #f7efe7;
-}
-
-.timeline-item h3{
-    font-size:22px;
-
-    margin-bottom:10px;
-}
-
-.timeline-item p{
-    line-height:1.8;
-
-    color:#806860;
-}
-
-
-/* =========================
-   LITTLE THINGS
-========================= */
-
-.little-things{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:20px;
-
-    max-width:800px;
-
-    margin:auto;
-}
-
-.thing{
-    background:#fffaf6;
-
-    padding:25px;
-
-    border-radius:18px;
-
-    border:1px solid #eadbd3;
-
-    font-size:18px;
-
-    transition:.3s;
-}
-
-.thing:hover{
-    transform:translateX(5px);
-}
-
-.heart{
-    color:#c27b86;
-
-    margin-right:10px;
-}
-
-
-/* =========================
-   QUOTE
-========================= */
-
-.quote-section{
-    text-align:center;
-
-    background:#6b4942;
-
-    color:white;
-
-    max-width:none;
-
-    margin-top:100px;
-
-    margin-bottom:0;
-}
-
-.quote{
-    max-width:800px;
-
-    margin:auto;
-
-    font-size:34px;
-
-    line-height:1.6;
-
-    font-style:italic;
-}
-
-.quote-small{
-    margin-top:25px;
-
-    opacity:.7;
-
-    letter-spacing:2px;
-}
-
-
-/* =========================
-   HIDDEN MESSAGE
-========================= */
-
-.message-box{
-    text-align:center;
-
-    max-width:700px;
-
-    margin:auto;
-}
-
-.message-button{
-    border:none;
-
-    background:#c5868e;
-
-    color:white;
-
-    padding:16px 35px;
-
-    border-radius:50px;
-
-    font-family:inherit;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.message-button:hover{
-    background:#a96973;
-
-    transform:translateY(-3px);
-}
-
-.hidden-message{
-    max-height:0;
-
-    overflow:hidden;
-
-    transition:1s ease;
-}
-
-.hidden-message.open{
-    max-height:500px;
-
-    margin-top:35px;
-}
-
-.hidden-message p{
-    background:#fffaf6;
-
-    padding:40px;
-
-    border-radius:20px;
-
-    line-height:2;
-
-    border:1px solid #eadbd3;
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-.final{
-    text-align:center;
-
-    padding:150px 8%;
-}
-
-.final h2{
-    font-size:55px;
-
-    font-weight:normal;
-
-    margin-bottom:25px;
-}
-
-.final p{
-    font-size:19px;
-
-    color:#846861;
-
-    line-height:1.8;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     text-align:center;
+    padding:65px 0 20px;
 
-    padding:40px;
-
-    background:#f0e1d8;
-
-    color:#80645d;
-
-    font-size:14px;
+    font-family:'Patrick Hand',cursive;
+    color:#ff9dc5;
+    font-size:22px;
 }
 
+footer span{
+    font-size:30px;
+}
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* FLOATING HEARTS */
 
-.floating{
+.floating-heart{
     position:fixed;
-
+    color:#ff83b6;
+    font-size:20px;
     pointer-events:none;
-
-    font-size:18px;
-
-    animation:floatUp 7s linear forwards;
-
-    opacity:.6;
-
-    z-index:0;
+    animation:float 7s linear infinite;
+    opacity:0;
+    z-index:1;
 }
 
-@keyframes floatUp{
-
+@keyframes float{
     0%{
-        transform:
-            translateY(0)
-            rotate(0deg);
-
+        transform:translateY(100vh) rotate(0deg);
         opacity:0;
     }
 
-    20%{
-        opacity:.6;
+    10%{
+        opacity:.8;
+    }
+
+    90%{
+        opacity:.5;
     }
 
     100%{
-        transform:
-            translateY(-100vh)
-            rotate(360deg);
-
+        transform:translateY(-20vh) rotate(25deg);
         opacity:0;
     }
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .photos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .photo-card:last-child{
+        grid-column:1 / -1;
+        width:50%;
+        margin:auto;
+    }
+
+    .extra{
+        grid-template-columns:1fr;
+    }
+
+    .letter{
+        padding:38px 25px 50px;
+    }
+
+    .letter-text{
+        font-size:23px;
+    }
 
 }
 
+@media(max-width:500px){
 
-/* =========================
-   REVEAL ANIMATION
-========================= */
+    .container{
+        width:94%;
+    }
 
-.reveal{
+    .small-title{
+        font-size:24px;
+    }
+
+    h1{
+        font-size:55px;
+    }
+
+    .subtitle{
+        font-size:23px;
+    }
+
+    .photos{
+        gap:12px;
+    }
+
+    .letter-text{
+        font-size:20px;
+    }
+
+    .letter-title{
+        font-size:28px;
+    }
+
+}
+
+/* ANIMATION */
+
+.fade{
     opacity:0;
-
-    transform:translateY(30px);
-
-    transition:1s ease;
+    transform:translateY(20px);
+    animation:appear 1s ease forwards;
 }
 
-.reveal.show{
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
-
-    nav{
-        gap:13px;
-
-        padding:12px 15px;
+@keyframes appear{
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
-
-    nav a{
-        font-size:11px;
-    }
-
-    section{
-        padding:90px 6%;
-    }
-
-    .hero h1{
-        font-size:65px;
-    }
-
-    .note{
-        padding:35px 25px;
-    }
-
-    .note p{
-        font-size:17px;
-    }
-
-    .photo-grid{
-        grid-template-columns:1fr;
-    }
-
-    .polaroid img{
-        height:420px;
-    }
-
-    .memory-grid{
-        grid-template-columns:1fr;
-    }
-
-    .little-things{
-        grid-template-columns:1fr;
-    }
-
-    .quote{
-        font-size:25px;
-    }
-
-    .final h2{
-        font-size:40px;
-    }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
+<div class="cloud left"></div>
+<div class="cloud right"></div>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<div class="container">
 
-<nav>
+    <header class="fade">
 
-<a href="#home">Home</a>
+        <div class="top-line">
+            <div class="wavy-heart left">♡</div>
 
-<a href="#message">Reminder</a>
+            <div class="small-title">
+                i got bored baby
+            </div>
 
-<a href="#song">Song</a>
+            <div class="wavy-heart right">♡</div>
+        </div>
 
-<a href="#photos">Photos</a>
+        <h1>
+            For Savanna ♡
+        </h1>
 
-<a href="#memories">Memories</a>
+        <div class="subtitle">
+            pros of having a Coding bf :)
+        </div>
 
-<a href="#things">Little Things</a>
+    </header>
 
-</nav>
 
+    <!-- LETTER -->
 
+    <section class="letter fade">
 
-<!-- =========================
-     HERO
-========================= -->
+        <div class="letter-title">
+            <span>A little reminder baby</span>
+        </div>
 
-<section class="hero" id="home">
+        <div class="letter-text">
 
-<div class="hero-content reveal">
+            HELLOOOO BABYYYY i just wanted to tell you how much you
+            mean to me through this small gesture and a way of saying
+            of saying I LOVEE YOUUU and how much i miss you :(.
+            <br><br>
 
-<div class="small-title">
-i got bored baby
-</div>
+            i have been stalking your reposts ah, babyyy namann :(
+            you know i love youuu so so so much and i only love YOU,
+            ONLY MY BABY, Savanna Yoell.
+            <br><br>
 
-<h1>
-For Savanna ♡
-</h1>
+            Take care of yourself po ah.
+            I Love youuu to INFINITY AND BEYOND
 
-<p>
-pros of having a Coding bf :)
-</p>
+        </div>
 
-<div class="scroll">
-↓ keep scrolling
-</div>
+        <div class="corner-heart one">♡</div>
+        <div class="corner-heart two">♡</div>
 
-</div>
+    </section>
 
-</section>
 
+    <!-- PHOTOS -->
 
+    <section class="photos fade">
 
-<!-- =========================
-     REMINDER
-========================= -->
+        <div class="photo-card">
+            <div class="photo-frame">
+                <img src="photo.1.jpg" alt="Photo 1">
+            </div>
 
-<section class="note-section" id="message">
+            <div class="photo-name">
+                Photo 1
+            </div>
+        </div>
 
-<div class="note reveal">
 
-<div class="small-title">
-A little reminder baby
-</div>
+        <div class="photo-card">
+            <div class="photo-frame">
+                <img src="photo.2.jpg" alt="Photo 2">
+            </div>
 
-<p>
-HELLOOOO BABYYYY i just wanted to tell you how much you mean to me through this small gesture and a way of saying of saying I LOVEE YOUUU and how much i miss you :( . i have been stalking your reposts ah, babyyy namann :( you know i love youuu so so so much and i only love YOU, ONLY MY BABY, Savanna Yoell. Take care of yourself po ah iba talaga pag Anemic e :(. I Love youuu to INFINITY AND BEYOND
-</p>
+            <div class="photo-name">
+                Photo 2
+            </div>
+        </div>
 
-</div>
 
-</section>
+        <div class="photo-card">
+            <div class="photo-frame">
+                <img src="photo.3.jpg" alt="Photo 3">
+            </div>
 
+            <div class="photo-name">
+                Photo 3
+            </div>
+        </div>
 
 
-<!-- =========================
-     OUR SONG
-========================= -->
+        <div class="photo-card">
+            <div class="photo-frame">
+                <img src="photo.4.jpg" alt="Photo 4">
+            </div>
 
-<section class="song-section" id="song">
+            <div class="photo-name">
+                Photo 4
+            </div>
+        </div>
 
-<div class="song-card reveal">
 
-<div class="song-icon">
-♫
-</div>
+        <div class="photo-card">
+            <div class="photo-frame">
+                <img src="photo.5.jpg" alt="Photo 5">
+            </div>
 
-<div class="small-title">
-our song
-</div>
+            <div class="photo-name">
+                Photo 5
+            </div>
+        </div>
 
-<h2>
-Bubbly ♡
-</h2>
+    </section>
 
-<p>
-Colbie Caillat
-</p>
 
-<a
-class="song-button"
-href="https://open.spotify.com/track/1lkvpmrCaXK8QtliFDcHBO"
-target="_blank"
-rel="noopener noreferrer"
->
-🎵 Play our song ♡
-</a>
+    <!-- BOTTOM -->
 
-</div>
+    <div class="bottom-message fade">
 
-</section>
+        <div class="line"></div>
 
+        <p>
+            you mean the world to me ♡
+        </p>
 
+    </div>
 
-<!-- =========================
-     PHOTO GALLERY
-========================= -->
 
-<section id="photos">
+    <!-- EXTRA CONTENT -->
 
-<div class="reveal">
+    <section class="extra">
 
-<h2 class="section-title">
-Our Little Gallery
-</h2>
+        <div class="box fade">
 
-<p class="section-subtitle">
-Five little pictures to keep in one place.
-Every picture gets its own little spot here.
-</p>
+            <h2>
+                ♡ Our Song
+            </h2>
 
-</div>
+            <p>
+                Bubbly — Colbie Caillat
+            </p>
 
+            <a
+                class="song-button"
+                href="https://open.spotify.com/track/1lkvpmrCaXK8QtliFDcHBO"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🎵 Play our song
+            </a>
 
-<div class="photo-grid">
+        </div>
 
 
-<div class="polaroid reveal">
+        <div class="box fade">
 
-<img
-src="photo.1.jpg"
-alt="Special photo 1"
->
+            <h2>
+                ♡ Little Reminder
+            </h2>
 
-<div class="caption">
-one of my favorites ♡
-</div>
+            <p>
+                No matter how busy things get,
+                remember that you are appreciated,
+                cared about, and very special.
+            </p>
 
-</div>
+        </div>
 
+    </section>
 
 
-<div class="polaroid reveal">
+    <footer class="fade">
 
-<img
-src="photo.2.jpg"
-alt="Special photo 2"
->
+        <span>♡</span>
 
-<div class="caption">
-another memory ♡
-</div>
+        <br>
 
-</div>
+        Made with love for Savanna
 
+        <br>
 
+        <span>♡</span>
 
-<div class="polaroid reveal">
-
-<img
-src="photo.3.jpg"
-alt="Special photo 3"
->
-
-<div class="caption">
-another little moment ♡
-</div>
-
-</div>
-
-
-
-<div class="polaroid reveal">
-
-<img
-src="photo.4.jpg"
-alt="Special photo 4"
->
-
-<div class="caption">
-one more memory ✨
-</div>
+    </footer>
 
 </div>
-
-
-
-<div class="polaroid reveal">
-
-<img
-src="photo.5.jpg"
-alt="Special photo 5"
->
-
-<div class="caption">
-and another one ♡
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     MEMORIES
-========================= -->
-
-<section id="memories">
-
-<div class="reveal">
-
-<h2 class="section-title">
-Little Memories
-</h2>
-
-<p class="section-subtitle">
-The little moments are sometimes the ones worth remembering most.
-</p>
-
-</div>
-
-
-<div class="memory-grid">
-
-
-<div class="memory-card reveal">
-
-<div class="memory-number">
-01
-</div>
-
-<h3>
-The Random Conversations
-</h3>
-
-<p>
-The conversations that start with absolutely nothing
-and somehow turn into hours of talking.
-</p>
-
-</div>
-
-
-
-<div class="memory-card reveal">
-
-<div class="memory-number">
-02
-</div>
-
-<h3>
-The Laughs
-</h3>
-
-<p>
-The random jokes and moments that somehow become
-way funnier than they should be.
-</p>
-
-</div>
-
-
-
-<div class="memory-card reveal">
-
-<div class="memory-number">
-03
-</div>
-
-<h3>
-The Little Moments
-</h3>
-
-<p>
-The simple things that might seem small,
-but somehow end up meaning a lot.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     TIMELINE
-========================= -->
-
-<section>
-
-<div class="reveal">
-
-<h2 class="section-title">
-Our Story So Far
-</h2>
-
-<p class="section-subtitle">
-A tiny timeline of moments worth keeping.
-</p>
-
-</div>
-
-
-<div class="timeline">
-
-
-<div class="timeline-item reveal">
-
-<div class="timeline-dot"></div>
-
-<h3>
-When We Started
-</h3>
-
-<p>
-Two people somehow became part of each other's everyday life.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item reveal">
-
-<div class="timeline-dot"></div>
-
-<h3>
-The Moments In Between
-</h3>
-
-<p>
-The conversations, jokes, laughs, little disagreements,
-and everything else that became part of our story.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item reveal">
-
-<div class="timeline-dot"></div>
-
-<h3>
-Right Now
-</h3>
-
-<p>
-Still making memories and still adding new pages to the story.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item reveal">
-
-<div class="timeline-dot"></div>
-
-<h3>
-What's Next
-</h3>
-
-<p>
-Hopefully a whole lot more memories waiting to happen.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     LITTLE THINGS
-========================= -->
-
-<section id="things">
-
-<div class="reveal">
-
-<h2 class="section-title">
-Little Things That Matter
-</h2>
-
-<p class="section-subtitle">
-The little things are usually the things that stay with us.
-</p>
-
-</div>
-
-
-<div class="little-things">
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The random conversations
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The stupid jokes
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The moments we can't stop laughing
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The unexpected messages
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The memories we already have
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-The memories we haven't made yet
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-Being able to be ourselves
-</div>
-
-
-<div class="thing reveal">
-<span class="heart">♡</span>
-Simply having someone who matters
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     QUOTE
-========================= -->
-
-<section class="quote-section">
-
-<div class="quote reveal">
-
-“Some of the best parts of life
-are the moments we never planned.”
-
-<div class="quote-small">
-for the memories ♡
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     HIDDEN MESSAGE
-========================= -->
-
-<section>
-
-<div class="message-box reveal">
-
-<h2 class="section-title">
-One More Thing...
-</h2>
-
-<p class="section-subtitle">
-Okay baby, there's one more thing hidden here.
-</p>
-
-
-<button
-class="message-button"
-onclick="openMessage()"
->
-Open the message ♡
-</button>
-
-
-<div
-class="hidden-message"
-id="hiddenMessage"
->
-
-<p>
-
-BABYYYY ♡
-
-<br><br>
-
-If you somehow made it all the way down here,
-then I guess you really read everything HAHAHA.
-
-<br><br>
-
-I hope this little website makes you smile,
-because I made it thinking about you.
-
-<br><br>
-
-I LOVE YOUUUU ♡
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     FINAL
-========================= -->
-
-<section class="final">
-
-<div class="reveal">
-
-<div class="small-title">
-the end... for now
-</div>
-
-<h2>
-I Love You ♡
-</h2>
-
-<p>
-I Love youuu to INFINITY AND BEYOND.
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-Made with ♡ for Savanna
-
-</footer>
-
 
 
 <script>
 
-/* =========================
-   HIDDEN MESSAGE
-========================= */
+/* FLOATING HEARTS */
 
-function openMessage(){
+function createHeart(){
 
-    const message =
-    document.getElementById("hiddenMessage");
+    const heart = document.createElement("div");
 
-    message.classList.toggle("open");
+    heart.className = "floating-heart";
 
+    heart.innerHTML = Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
 }
 
+setInterval(createHeart,900);
 
-/* =========================
-   SCROLL REVEAL
-========================= */
 
-const revealElements =
-document.querySelectorAll(".reveal");
+/* FADE IN */
 
-const observer =
-new IntersectionObserver(
+const items = document.querySelectorAll(".fade");
 
-(entries)=>{
+const observer = new IntersectionObserver(
+    entries => {
 
-    entries.forEach(entry=>{
+        entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+            if(entry.isIntersecting){
 
-            entry.target.classList.add("show");
+                entry.target.style.animationDelay =
+                    Math.random() * .3 + "s";
 
-        }
+                entry.target.classList.add("fade");
 
-    });
+            }
 
-},
+        });
 
-{
-    threshold:.12
-}
-
+    },
+    {
+        threshold:.1
+    }
 );
 
-
-revealElements.forEach(
-element=>observer.observe(element)
-);
-
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-function createFloating(){
-
-    const element =
-    document.createElement("div");
-
-    element.className =
-    "floating";
-
-    const symbols = [
-        "♡",
-        "♥",
-        "✦",
-        "⋆",
-        "♡"
-    ];
-
-    element.innerHTML =
-    symbols[
-        Math.floor(
-            Math.random() *
-            symbols.length
-        )
-    ];
-
-    element.style.left =
-    Math.random() * 100 + "vw";
-
-    element.style.bottom =
-    "-30px";
-
-    element.style.animationDuration =
-    (5 + Math.random() * 5) + "s";
-
-    element.style.fontSize =
-    (12 + Math.random() * 15) + "px";
-
-    document.body.appendChild(element);
-
-
-    setTimeout(
-        ()=>element.remove(),
-        10000
-    );
-
-}
-
-
-setInterval(
-    createFloating,
-    900
-);
+items.forEach(item => observer.observe(item));
 
 </script>
 
-
 </body>
-
 </html>
